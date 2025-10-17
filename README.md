@@ -61,6 +61,6 @@ npm run seed
 
 ### 5. Run backend
 
-Development (with live reload using ts-node):
+Development (with live reload using tsx):
 
 npm run dev
