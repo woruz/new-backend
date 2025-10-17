@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { SignOptions, Secret } from "jsonwebtoken";
 
 export const login = (req: Request, res: Response) => {
   const { username, password } = req.body;
@@ -9,11 +9,17 @@ export const login = (req: Request, res: Response) => {
     throw new Error("JWT_EXPIRES_IN is not defined");
   }
 
+  const secret: Secret | undefined = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error("JWT_SECRET is not defined");
+  }
+
   if (
     username === process.env.ADMIN_USER &&
     password === process.env.ADMIN_PASS
   ) {
-    const token = jwt.sign({ username }, process.env.JWT_SECRET!, { expiresIn: expiresIn });
+    const options: SignOptions = { expiresIn: expiresIn as unknown as number };
+    const token = jwt.sign({ username }, secret, options);
     return res.json({ token });
   }
 
