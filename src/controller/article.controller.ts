@@ -36,6 +36,13 @@ export const getArticles = async (req: Request, res: Response) => {
   }
 };
 
+export const getArticleById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const article = await ArticleModel.findById(id);
+  if (!article) return res.status(404).json({ message: "Article not found" });
+  res.json(article);
+}
+
 export const getArticleBySlug = async (req: Request, res: Response) => {
   const { slug } = req.params;
   const article = await ArticleModel.findOne({ slug });
