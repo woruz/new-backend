@@ -115,9 +115,10 @@ npm install
 
 ```
 
-### 3. Run the seed file
+### 3. Run the seed file and create env file
 
 ```bash
+cp .env.sample .env
 npm run seed
 ```
 
