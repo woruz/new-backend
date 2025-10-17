@@ -47,20 +47,38 @@ Follow these steps to get the NewsHub application running locally.
 +---------------------------+
 |       React Frontend     |
 |---------------------------|
-| - Mode toggle (SSE/Search)|
-| - Log filters + form UI   |
-| - Fetch API + EventSource |
+| - Browse latest articles  |
+| - Search and filter by    |
+|   category or keyword     |
+| - View single article     |
+| - Admin dashboard UI      |
+|   (create, edit, delete)  |
 +---------------------------+
            │
            ▼
 +---------------------------+
 |       Express Backend     |
 |---------------------------|
-| - POST /logs              |
-| - GET /logs/search        |
-| - GET /logs (SSE)         |
-| - Joi validation          |
-| - In-memory SSE clients   |
+| - JWT-based admin auth    |
+| - CRUD endpoints for      |
+|   articles                |
+|   (POST, GET, PUT, DELETE)|
+| - Pagination and search   |
+| - Input validation        |
+| - Protected routes        |
++---------------------------+
+           │
+           ▼
++---------------------------+
+|      MongoDB Database     |
+|---------------------------|
+| - Stores articles and     |
+|   metadata                |
+| - Fields: title, slug,    |
+|   content, excerpt,       |
+|   category, author, tags, |
+|   imageUrl, publishedAt,  |
+|   readingTime             |
 +---------------------------+
 ```
 
